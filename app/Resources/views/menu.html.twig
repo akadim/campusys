@@ -1,0 +1,50 @@
+<div class="navbar-inner"> 
+
+    <!--mobile collapse menu button--> 
+    <a class="btn btn-navbar pull-left" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> 
+
+    <!--user menu-->
+    <ul class="nav user-menu pull-right">
+
+        <!--<li style="margin-right: 10px;"><a href="{{ path('it_certif_home_admin_homepage') }}" class="btn btn-primary signup">Administration</a></li>       -->
+        <li style="margin-right: 5px;">
+            
+        </li>
+        <li class="dropdown"> <a href="login.html" class="btn btn-primary dropdown-toggle login" id="login-drop" data-toggle="dropdown">Connexion</a>
+            <div class="dropdown-menu" role="menu" aria-labelledby="login-drop">
+                <form action="login.html" class="form-inline" id="login-form-drop" role="menuitem" />
+                <div class="input-append">
+                    <input type="text" class="input-small email" placeholder="Email" />
+                    <input type="password" class="input-small password" placeholder="Password" />
+                    <input type="button" class="btn btn-primary login" value="Login" />
+                </div>
+                </form>
+                <span class="divider" role="menuitem"></span> <small role="menuitem">Vous n&acute;&ecirc;tes pas un membre? <a href="#" class="signup">Inscrit maintenant!</a></small> <small role="menuitem"><a href="#">Mot de passe oublié?</a></small> </div>
+        </li>
+    </ul>
+
+    <!--everything within this div is collapsed on mobile-->
+    <div class="nav-collapse collapse"> 
+
+        <!--main navigation-->
+        <ul class="nav" id="main-menu">
+            <li class="home-link"><a href="index.php"><i class="icon-home hidden-phone"></i><span class="visible-phone">Home</span></a></li>
+            <li class="dropdown"><a href="index.php" class="dropdown-toggle menu-item" id="features-drop" data-toggle="dropdown">Nos services</a> 
+                <!-- Dropdown Menu -->
+                <!-- Dropdown Menu -->
+                <ul class="dropdown-menu" role="menu" aria-labelledby="about-drop">
+                    <li role="menuitem"><a href="{{ path('it_certif_formation_univ_index') }}" tabindex="-1" class="menu-item">Formation universitaire</a></li>
+                    <li role="menuitem"><a href="certifications.php" tabindex="-1" class="menu-item">Certification</a></li>
+                    <li role="menuitem"><a href="{{ path('itcertif_formations_categories_list') }}" tabindex="-1" class="menu-item">Formation</a></li>
+                    <li role="menuitem"><a href="#" tabindex="-1" class="menu-item">Consulting</a></li>
+                    <li role="menuitem"><a href="secure.php" tabindex="-1" class="menu-item">S&eacute;curit&eacute;</a></li>
+                    <li role="menuitem"><a href="#" tabindex="-1" class="menu-item">Shop</a></li>
+                    <li role="menuitem"><a href="#" tabindex="-1" class="menu-item">D&eacute;veloppement informatique</a></li>
+                </ul>
+            </li>
+            <li><a href="{{ path('it_certif_gallery') }}" class="menu-item">Gallery</a></li>
+            <li><a href="{{ path('itcertif_contact_form') }}" class="menu-item">Contact</a></li>
+        </ul>
+    </div>
+    <!--/.nav-collapse --> 
+</div>

@@ -1,0 +1,33 @@
+campusys_pedagogie_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: campusysPedagogieBundle:Default:index }
+
+# Backend
+# Universities
+campusys_universities_list:
+    path: /admin/universities/
+    defaults: { _controller: campusysPedagogieBundle:University:admin_index }
+
+campusys_university_edit:
+    pattern: /admin/university/edit/{id}
+    defaults: { _controller: campusysPedagogieBundle:University:admin_edit }
+    
+campusys_university_edit_column:
+    pattern: /admin/university/editColumn/{column}/{value}/{id}
+    defaults: { _controller: campusysPedagogieBundle:University:admin_edit_column }
+    
+campusys_university_view:
+    pattern: /admin/university/view/{id}
+    defaults: { _controller: campusysPedagogieBundle:University:admin_view }
+
+campusys_university_delete:
+    pattern: /admin/university/delete/{id}
+    defaults: { _controller: campusysPedagogieBundle:University:admin_delete }
+
+campusys_university_active:
+    pattern: /admin/universities/active/{id}
+    defaults: { _controller: campusysPedagogieBundle:University:admin_active }
+
+campusys_university_delete_selection:
+    pattern: /admin/university/deleteSelection
+    defaults: { _controller: campusysPedagogieBundle:University:admin_delete_selection }

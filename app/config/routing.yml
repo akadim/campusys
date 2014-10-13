@@ -1,0 +1,8 @@
+campusys_pedagogie:
+    resource: "@campusysPedagogieBundle/Resources/config/routing.yml"
+    prefix:   /
+
+campusys_home:
+    resource: "@campusysHomeBundle/Resources/config/routing.yml"
+    prefix:   /
+    

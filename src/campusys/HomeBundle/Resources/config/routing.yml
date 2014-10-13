@@ -1,0 +1,7 @@
+campusys_home_homepage:
+    pattern:  /
+    defaults: { _controller: campusysHomeBundle:Home:index }
+
+campusys_home_admin_homepage:
+    pattern:  /admin
+    defaults: { _controller: campusysHomeBundle:Home:admin_index }

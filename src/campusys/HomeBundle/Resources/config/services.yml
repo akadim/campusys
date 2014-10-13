@@ -1,0 +1,7 @@
+parameters:
+#    it_certif_home.example.class: itCertif\HomeBundle\Example
+
+services:
+#    it_certif_home.example:
+#        class: %it_certif_home.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
