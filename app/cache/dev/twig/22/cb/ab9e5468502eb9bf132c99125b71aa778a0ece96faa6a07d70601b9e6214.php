@@ -63,7 +63,7 @@ class __TwigTemplate_22cbab9e5468502eb9bf132c99125b71aa778a0ece96faa6a07d70601b9
         echo "\" method=\"post\">
          <div class=\"mws-panel grid_8\">
                 \t<div class=\"mws-panel-header\">
-                    \t<span><i class=\"icon-table\"></i> Liste des formations</span>
+                    \t<span><i class=\"icon-table\"></i> Liste des universit&eacute;s</span>
                     </div>
                     <div class=\"mws-panel-toolbar\">
                         <div class=\"btn-toolbar\">
@@ -75,7 +75,6 @@ class __TwigTemplate_22cbab9e5468502eb9bf132c99125b71aa778a0ece96faa6a07d70601b9
                                 <a href=\"#\" class=\"btn checkAll\"><i class=\"icol-accept\"></i> Tout cocher</a>
                                 <a href=\"#\" class=\"btn uncheckAll\"><i class=\"icol-delete\"></i> Tout d&eacute;cocher</a>
                                 <button class=\"btn btn_delete_all\" type=\"submit\" onclick=\"if(!confirm('Vous êtes sure de vouloir supprimer la(les) lignes sélectionnées?')) { return false; }\"><i class=\"icol-cross\"></i> Supprimer</button>
-                                <a href=\"#\" class=\"btn\"><i class=\"icol-printer\"></i> Print</a>
                             </div>
                         </div>
                     </div>
@@ -94,75 +93,75 @@ class __TwigTemplate_22cbab9e5468502eb9bf132c99125b71aa778a0ece96faa6a07d70601b9
                             </thead>
                             <tbody id=\"frm_table\">
                             ";
-        // line 44
+        // line 43
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["universities"]) ? $context["universities"] : $this->getContext($context, "universities")));
         foreach ($context['_seq'] as $context["_key"] => $context["university"]) {
-            // line 45
+            // line 44
             echo "                                <tr>
                                     <td><input type=\"checkbox\" id=\"check_form\" class=\"check_frm_select\" value=\"";
-            // line 46
+            // line 45
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["university"]) ? $context["university"] : $this->getContext($context, "university")), "id"), "html", null, true);
             echo "\"/></td>
                                     <td class=\"cell_edit texte_name_";
-            // line 47
+            // line 46
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["university"]) ? $context["university"] : $this->getContext($context, "university")), "id"), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["university"]) ? $context["university"] : $this->getContext($context, "university")), "name"), "html", null, true);
             echo "</td>
                                     <td class=\"cell_edit texte_address_";
-            // line 48
+            // line 47
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["university"]) ? $context["university"] : $this->getContext($context, "university")), "id"), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["university"]) ? $context["university"] : $this->getContext($context, "university")), "address"), "html", null, true);
             echo "</td>
                                     <td class=\"combo_created_";
-            // line 49
+            // line 48
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["university"]) ? $context["university"] : $this->getContext($context, "university")), "id"), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["university"]) ? $context["university"] : $this->getContext($context, "university")), "created"), "d/m/Y"), "html", null, true);
             echo "</td>
                                     <td class=\"cell_edit texte_presidentName_";
-            // line 50
+            // line 49
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["university"]) ? $context["university"] : $this->getContext($context, "university")), "id"), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["university"]) ? $context["university"] : $this->getContext($context, "university")), "presidentName"), "html", null, true);
             echo "</td>
                                     <td>
                                       <a id=\"";
-            // line 52
+            // line 51
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["university"]) ? $context["university"] : $this->getContext($context, "university")), "id"), "html", null, true);
             echo "\" class=\"active_formation_link\" href=\"#\">
                                        ";
-            // line 53
+            // line 52
             if (($this->getAttribute((isset($context["university"]) ? $context["university"] : $this->getContext($context, "university")), "active") == true)) {
-                // line 54
+                // line 53
                 echo "                                          <span id =\"active_formation_";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["university"]) ? $context["university"] : $this->getContext($context, "university")), "id"), "html", null, true);
                 echo "\" class=\"badge badge-info\">Oui</span>
                                        ";
             } else {
-                // line 56
+                // line 55
                 echo "                                          <span id =\"active_formation_";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["university"]) ? $context["university"] : $this->getContext($context, "university")), "id"), "html", null, true);
                 echo "\" class=\"badge badge-important\">Non</span>
                                        ";
             }
-            // line 58
+            // line 57
             echo "                                      </a>
                                     </td>
                                     <td>
                                         <span class=\"btn-group\">
                                             <a href=\"\" id=\"view_";
-            // line 62
+            // line 61
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["university"]) ? $context["university"] : $this->getContext($context, "university")), "id"), "html", null, true);
             echo "\" class=\"mws-jui-dialog-mdl-btn view_element btn btn-small\"><i class=\"icon-search\"></i></a>
                                             <a href=\"";
-            // line 63
+            // line 62
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("campusys_university_edit", array("id" => $this->getAttribute((isset($context["university"]) ? $context["university"] : $this->getContext($context, "university")), "id"))), "html", null, true);
             echo "\" class=\"btn btn-small\"><i class=\"icon-pencil\"></i></a>
                                             <a href=\"";
-            // line 64
+            // line 63
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("campusys_university_delete", array("id" => $this->getAttribute((isset($context["university"]) ? $context["university"] : $this->getContext($context, "university")), "id"))), "html", null, true);
             echo "\" class=\"btn btn-small confirm_delete\" onclick=\"if(!confirm('Vous êtes sure de vouloir supprimer cette ligne?')) { return false; }\"><i class=\"icon-trash\"></i></a>
                                         </span>
@@ -173,7 +172,7 @@ class __TwigTemplate_22cbab9e5468502eb9bf132c99125b71aa778a0ece96faa6a07d70601b9
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['university'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 68
+        // line 67
         echo "                 
                             </tbody>
                         </table>
@@ -199,6 +198,6 @@ class __TwigTemplate_22cbab9e5468502eb9bf132c99125b71aa778a0ece96faa6a07d70601b9
 
     public function getDebugInfo()
     {
-        return array (  177 => 68,  166 => 64,  162 => 63,  158 => 62,  152 => 58,  146 => 56,  140 => 54,  138 => 53,  134 => 52,  127 => 50,  121 => 49,  115 => 48,  109 => 47,  105 => 46,  102 => 45,  98 => 44,  73 => 22,  62 => 14,  59 => 13,  49 => 9,  46 => 8,  42 => 7,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  176 => 67,  165 => 63,  161 => 62,  157 => 61,  151 => 57,  145 => 55,  139 => 53,  137 => 52,  133 => 51,  126 => 49,  120 => 48,  114 => 47,  108 => 46,  104 => 45,  101 => 44,  97 => 43,  73 => 22,  62 => 14,  59 => 13,  49 => 9,  46 => 8,  42 => 7,  39 => 6,  36 => 5,  29 => 3,);
     }
 }

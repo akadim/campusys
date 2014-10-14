@@ -13,11 +13,11 @@ campusys_university_edit:
     defaults: { _controller: campusysPedagogieBundle:University:admin_edit }
     
 campusys_university_edit_column:
-    pattern: /admin/university/editColumn/{column}/{value}/{id}
+    pattern: /admin/universities/editColumn/{column}/{value}/{id}
     defaults: { _controller: campusysPedagogieBundle:University:admin_edit_column }
     
 campusys_university_view:
-    pattern: /admin/university/view/{id}
+    pattern: /admin/universities/view/{id}
     defaults: { _controller: campusysPedagogieBundle:University:admin_view }
 
 campusys_university_delete:
@@ -31,3 +31,64 @@ campusys_university_active:
 campusys_university_delete_selection:
     pattern: /admin/university/deleteSelection
     defaults: { _controller: campusysPedagogieBundle:University:admin_delete_selection }
+    
+    
+# Campus
+campusys_campuses_list:
+    path: /admin/campus/
+    defaults: { _controller: campusysPedagogieBundle:Campus:admin_index }
+
+campusys_campus_edit:
+    pattern: /admin/campus/edit/{id}
+    defaults: { _controller: campusysPedagogieBundle:Campus:admin_edit }
+    
+campusys_campus_edit_column:
+    pattern: /admin/campus/editColumn/{column}/{value}/{id}
+    defaults: { _controller: campusysPedagogieBundle:Campus:admin_edit_column }
+    
+campusys_campus_view:
+    pattern: /admin/campus/view/{id}
+    defaults: { _controller: campusysPedagogieBundle:Campus:admin_view }
+
+campusys_campus_delete:
+    pattern: /admin/campus/delete/{id}
+    defaults: { _controller: campusysPedagogieBundle:Campus:admin_delete }
+
+campusys_campus_active:
+    pattern: /admin/campus/active/{id}
+    defaults: { _controller: campusysPedagogieBundle:Campus:admin_active }
+
+campusys_campus_delete_selection:
+    pattern: /admin/campus/deleteSelection
+    defaults: { _controller: campusysPedagogieBundle:Campus:admin_delete_selection }
+    
+    
+
+# filière
+campusys_filieres_list:
+    path: /admin/filiere/
+    defaults: { _controller: campusysPedagogieBundle:Filiere:admin_index }
+
+campusys_filiere_edit:
+    pattern: /admin/filiere/edit/{id}
+    defaults: { _controller: campusysPedagogieBundle:Filiere:admin_edit }
+    
+campusys_filiere_edit_column:
+    pattern: /admin/filiere/editColumn/{column}/{value}/{id}
+    defaults: { _controller: campusysPedagogieBundle:Filiere:admin_edit_column }
+    
+campusys_filiere_view:
+    pattern: /admin/filiere/view/{id}
+    defaults: { _controller: campusysPedagogieBundle:Filiere:admin_view }
+
+campusys_filiere_delete:
+    pattern: /admin/filiere/delete/{id}
+    defaults: { _controller: campusysPedagogieBundle:Filiere:admin_delete }
+
+campusys_filiere_active:
+    pattern: /admin/filiere/active/{id}
+    defaults: { _controller: campusysPedagogieBundle:Filiere:admin_active }
+
+campusys_filiere_delete_selection:
+    pattern: /admin/filiere/deleteSelection
+    defaults: { _controller: campusysPedagogieBundle:Filiere:admin_delete_selection }

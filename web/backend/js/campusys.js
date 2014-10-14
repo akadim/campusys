@@ -77,12 +77,10 @@ $(document).ready(function() {
     $("#mws-validate").validate();
 
     $(document).on("click", ".active_formation_link", function(event) {
-        alert("kadim");
         event.preventDefault();
         var form_id = parseInt($(this).attr('id'));
         $.get("active/" + form_id, function(response) {
             response = parseInt(response);
-            alert(response);
             if (response == 0)
             {
                 $("#active_formation_" + form_id).attr('class', 'badge badge-important');
@@ -119,7 +117,6 @@ $(document).ready(function() {
         e.preventDefault();
         rows = $("#row_selected").val();
         $("#row_selected").val(rows + "-" + $(this).val());
-        alert($("#row_selected").val());
     });
 
     $(document).on("dblclick", ".cell_edit", function() {

@@ -138,33 +138,33 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'campusys_pedagogie_homepage')), array (  '_controller' => 'campusysPedagogieBundle:Default:index',));
         }
 
-        if (0 === strpos($pathinfo, '/admin/universit')) {
-            // campusys_universities_list
-            if (rtrim($pathinfo, '/') === '/admin/universities') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'campusys_universities_list');
-                }
-
-                return array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\UniversityController::admin_indexAction',  '_route' => 'campusys_universities_list',);
-            }
-
-            if (0 === strpos($pathinfo, '/admin/university')) {
-                if (0 === strpos($pathinfo, '/admin/university/edit')) {
-                    // campusys_university_edit
-                    if (preg_match('#^/admin/university/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'campusys_university_edit')), array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\UniversityController::admin_editAction',));
+        if (0 === strpos($pathinfo, '/admin')) {
+            if (0 === strpos($pathinfo, '/admin/universit')) {
+                // campusys_universities_list
+                if (rtrim($pathinfo, '/') === '/admin/universities') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'campusys_universities_list');
                     }
 
+                    return array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\UniversityController::admin_indexAction',  '_route' => 'campusys_universities_list',);
+                }
+
+                // campusys_university_edit
+                if (0 === strpos($pathinfo, '/admin/university/edit') && preg_match('#^/admin/university/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'campusys_university_edit')), array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\UniversityController::admin_editAction',));
+                }
+
+                if (0 === strpos($pathinfo, '/admin/universities')) {
                     // campusys_university_edit_column
-                    if (0 === strpos($pathinfo, '/admin/university/editColumn') && preg_match('#^/admin/university/editColumn/(?P<column>[^/]++)/(?P<value>[^/]++)/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (0 === strpos($pathinfo, '/admin/universities/editColumn') && preg_match('#^/admin/universities/editColumn/(?P<column>[^/]++)/(?P<value>[^/]++)/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                         return $this->mergeDefaults(array_replace($matches, array('_route' => 'campusys_university_edit_column')), array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\UniversityController::admin_edit_columnAction',));
                     }
 
-                }
+                    // campusys_university_view
+                    if (0 === strpos($pathinfo, '/admin/universities/view') && preg_match('#^/admin/universities/view/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'campusys_university_view')), array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\UniversityController::admin_viewAction',));
+                    }
 
-                // campusys_university_view
-                if (0 === strpos($pathinfo, '/admin/university/view') && preg_match('#^/admin/university/view/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'campusys_university_view')), array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\UniversityController::admin_viewAction',));
                 }
 
                 // campusys_university_delete
@@ -172,16 +172,106 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'campusys_university_delete')), array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\UniversityController::admin_deleteAction',));
                 }
 
+                // campusys_university_active
+                if (0 === strpos($pathinfo, '/admin/universities/active') && preg_match('#^/admin/universities/active/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'campusys_university_active')), array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\UniversityController::admin_activeAction',));
+                }
+
+                // campusys_university_delete_selection
+                if ($pathinfo === '/admin/university/deleteSelection') {
+                    return array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\UniversityController::admin_delete_selectionAction',  '_route' => 'campusys_university_delete_selection',);
+                }
+
             }
 
-            // campusys_university_active
-            if (0 === strpos($pathinfo, '/admin/universities/active') && preg_match('#^/admin/universities/active/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'campusys_university_active')), array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\UniversityController::admin_activeAction',));
+            if (0 === strpos($pathinfo, '/admin/campus')) {
+                // campusys_campuses_list
+                if (rtrim($pathinfo, '/') === '/admin/campus') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'campusys_campuses_list');
+                    }
+
+                    return array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\CampusController::admin_indexAction',  '_route' => 'campusys_campuses_list',);
+                }
+
+                if (0 === strpos($pathinfo, '/admin/campus/edit')) {
+                    // campusys_campus_edit
+                    if (preg_match('#^/admin/campus/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'campusys_campus_edit')), array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\CampusController::admin_editAction',));
+                    }
+
+                    // campusys_campus_edit_column
+                    if (0 === strpos($pathinfo, '/admin/campus/editColumn') && preg_match('#^/admin/campus/editColumn/(?P<column>[^/]++)/(?P<value>[^/]++)/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'campusys_campus_edit_column')), array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\CampusController::admin_edit_columnAction',));
+                    }
+
+                }
+
+                // campusys_campus_view
+                if (0 === strpos($pathinfo, '/admin/campus/view') && preg_match('#^/admin/campus/view/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'campusys_campus_view')), array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\CampusController::admin_viewAction',));
+                }
+
+                // campusys_campus_delete
+                if (0 === strpos($pathinfo, '/admin/campus/delete') && preg_match('#^/admin/campus/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'campusys_campus_delete')), array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\CampusController::admin_deleteAction',));
+                }
+
+                // campusys_campus_active
+                if (0 === strpos($pathinfo, '/admin/campus/active') && preg_match('#^/admin/campus/active/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'campusys_campus_active')), array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\CampusController::admin_activeAction',));
+                }
+
+                // campusys_campus_delete_selection
+                if ($pathinfo === '/admin/campus/deleteSelection') {
+                    return array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\CampusController::admin_delete_selectionAction',  '_route' => 'campusys_campus_delete_selection',);
+                }
+
             }
 
-            // campusys_university_delete_selection
-            if ($pathinfo === '/admin/university/deleteSelection') {
-                return array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\UniversityController::admin_delete_selectionAction',  '_route' => 'campusys_university_delete_selection',);
+            if (0 === strpos($pathinfo, '/admin/filiere')) {
+                // campusys_filieres_list
+                if (rtrim($pathinfo, '/') === '/admin/filiere') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'campusys_filieres_list');
+                    }
+
+                    return array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\FiliereController::admin_indexAction',  '_route' => 'campusys_filieres_list',);
+                }
+
+                if (0 === strpos($pathinfo, '/admin/filiere/edit')) {
+                    // campusys_filiere_edit
+                    if (preg_match('#^/admin/filiere/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'campusys_filiere_edit')), array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\FiliereController::admin_editAction',));
+                    }
+
+                    // campusys_filiere_edit_column
+                    if (0 === strpos($pathinfo, '/admin/filiere/editColumn') && preg_match('#^/admin/filiere/editColumn/(?P<column>[^/]++)/(?P<value>[^/]++)/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'campusys_filiere_edit_column')), array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\FiliereController::admin_edit_columnAction',));
+                    }
+
+                }
+
+                // campusys_filiere_view
+                if (0 === strpos($pathinfo, '/admin/filiere/view') && preg_match('#^/admin/filiere/view/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'campusys_filiere_view')), array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\FiliereController::admin_viewAction',));
+                }
+
+                // campusys_filiere_delete
+                if (0 === strpos($pathinfo, '/admin/filiere/delete') && preg_match('#^/admin/filiere/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'campusys_filiere_delete')), array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\FiliereController::admin_deleteAction',));
+                }
+
+                // campusys_filiere_active
+                if (0 === strpos($pathinfo, '/admin/filiere/active') && preg_match('#^/admin/filiere/active/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'campusys_filiere_active')), array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\FiliereController::admin_activeAction',));
+                }
+
+                // campusys_filiere_delete_selection
+                if ($pathinfo === '/admin/filiere/deleteSelection') {
+                    return array (  '_controller' => 'campusys\\PedagogieBundle\\Controller\\FiliereController::admin_delete_selectionAction',  '_route' => 'campusys_filiere_delete_selection',);
+                }
+
             }
 
         }

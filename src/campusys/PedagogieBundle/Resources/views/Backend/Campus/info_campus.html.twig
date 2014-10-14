@@ -1,0 +1,42 @@
+{# empty Twig template #}
+<center>
+    <img src="../../../uploads/campuses/{{ campus.logo }}" alt="profil" style="width: 300px; height: 200px;"/>
+</center>
+<ul class="mws-summary clearfix">
+    <li>
+        <span class="key"><i class="icon-support"></i> Nom</span>
+        <span class="val">
+            <span class="text-nowrap">{{ campus.name }}</span>
+        </span>
+    </li>
+    <li>
+        <span class="key"><i class="icon-certificate"></i> Adresse</span>
+        <span class="val">
+            <span class="text-nowrap">{{ campus.address }}</span>
+        </span>
+    </li>
+    <li>
+        <span class="key"><i class="icon-certificate"></i> Slogan</span>
+        <span class="val">
+            <span class="text-nowrap">{{ campus.slogan }}</span>
+        </span>
+    </li>
+    <li>
+        <span class="key"><i class="icon-certificate"></i> Description</span>
+        <span class="val">
+            <span class="text-nowrap">{{ campus.description }}</span>
+        </span>
+    </li>
+    <li>
+        <span class="key"><i class="icon-certificate"></i> Nom du doyen</span>
+        <span class="val">
+            <span class="text-nowrap">{{ campus.deanName }}</span>
+        </span>
+    </li>
+    <li>
+        <span class="key"><i class="icon-certificate"></i> Date de cr&eacute;ation</span>
+        <span class="val">
+            <span class="text-nowrap">{{ campus.created | date("d/m/Y") }}</span>
+        </span>
+    </li>
+</ul>
