@@ -4,6 +4,7 @@ namespace campusys\PedagogieBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Campus
@@ -101,6 +102,14 @@ class Campus
      */
     private $university;
 
+    /**
+     *@ORM\OneToMany(targetEntity="Filiere", mappedBy="campus", fetch="EAGER", cascade={"persist", "remove"})
+     */
+    private $filieres;
+    
+    public function __construct(){
+        $this->filieres = new ArrayCollection();
+    }
     /**
      * Get id
      *
@@ -289,6 +298,13 @@ class Campus
         $this->university = $university;
     }
     
+    public function getFilieres(){
+        return $this->filieres;
+    }
+    
+    public function setFilieres($filieres){
+        $this->filieres = $filieres;
+    }
     /**
      *  @ORM\PrePersist
      *  @ORM\PreFlush

@@ -62,14 +62,14 @@ class FiliereController extends Controller
                    $em->flush();
                    
                    if($id != -1)
-                       $this->get('session')->getFlashBag()->add('info', 'Filiere modifiée avec succès');
+                       $this->get('session')->getFlashBag()->add('info', 'Filière modifiée avec succès');
                    else
-                       $this->get('session')->getFlashBag()->add('info', 'Filiere ajoutée avec succès');
+                       $this->get('session')->getFlashBag()->add('info', 'Filière ajoutée avec succès');
                    
                    return $this->redirect($this->generateUrl('campusys_filieres_list'));
                }
            }
-           return $this->render("campusysPedagogieBundle:Backend/Filiere:edit_campus.html.twig", array("form" => $form->createView(), "errors" => $errors_frm));
+           return $this->render("campusysPedagogieBundle:Backend/Filiere:edit_filiere.html.twig", array("form" => $form->createView(), "errors" => $errors_frm));
     }
     
     public function admin_edit_columnAction($column = null, $value = null, $id = null) {
@@ -80,7 +80,7 @@ class FiliereController extends Controller
         $filiere = $this->getDoctrine()->getRepository("campusysPedagogieBundle:Filiere")->find($id);
         
         if($filiere == null)
-            return $this->createNotFoundException("Le campus avec l'id "+$id+" est inexistant");
+            return $this->createNotFoundException("La filière avec l'id "+$id+" est inexistant");
         
         
         $filiere->set($column, $value);
@@ -94,7 +94,7 @@ class FiliereController extends Controller
     public function admin_viewAction($id = null){
         $filiere = $this->getDoctrine()->getRepository("campusysPedagogieBundle:Filiere")->find($id);
         
-        return $this->render("campusysPedagogieBundle:Backend/Filiere:info_campus.html.twig", array("filiere" => $filiere));
+        return $this->render("campusysPedagogieBundle:Backend/Filiere:info_filiere.html.twig", array("filiere" => $filiere));
     }
     
     public function admin_deleteAction($id = null) {
@@ -102,12 +102,12 @@ class FiliereController extends Controller
         $filiere = $this->getDoctrine()->getRepository("campusysPedagogieBundle:Filiere")->find($id);
         
         if($filiere == null){
-            return $this->createNotFoundException("Le campus avec l'id "+$id+" est inexistant");
+            return $this->createNotFoundException("La filière avec l'id "+$id+" est inexistant");
         }
         if($this->get('request')->getMethod() == 'GET'){
             $em->remove($filiere);
             $em->flush();
-            $this->get('session')->getFlashBag()->add('info', "Le campus est supprimé avec succès");
+            $this->get('session')->getFlashBag()->add('info', "La filière est supprimé avec succès");
         }
         
         

@@ -1,0 +1,58 @@
+{# empty Twig template #}
+{% extends '::admin.html.twig' %}
+
+{% block title %}{{ parent() }} - Fili&egrave;re{% endblock %}
+
+{% block body %}
+
+    <div class="mws-panel grid_8">
+        <div class="mws-panel-header">
+            <span><i class="icon-ok"> Ajout/Modification d'une filière</i></span>
+        </div>
+        <div class="mws-panel-body no-padding">
+            <form id="mws-validate" class="mws-form" {{form_enctype(form)}} method="post">
+                {% if errors|length > 0 %}
+                    <div id="mws-validate-error" class="mws-form-message error" style="{{ form_errors(form)}}}">
+                        Votre saisie n'est pas valide: 
+                        <ul>
+                            {% for error in errors %}
+                                <li>{{error.message}}</li>
+                                {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                <div class="mws-form-inline">
+                    <div class="mws-form-row">
+                        {{ form_label(form.name, 'Nom', {'label_attr': {'class': 'mws-form-label'}}) }}
+                        <div class="mws-form-item">
+                            {{ form_widget(form.name, {'attr': {'class': 'required large'}}) }}
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        {{ form_label(form.description, 'Description', {'label_attr': {'class': 'mws-form-label'}}) }}
+                        <div class="mws-form-item">
+                            {{ form_widget(form.description, {'attr': {'class': 'large cleditor'}}) }}
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        {{ form_label(form.campus, 'Campus', {'label_attr': {'class': 'mws-form-label'}}) }}
+                        <div class="mws-form-item">
+                            {{ form_widget(form.campus, {'attr': {'class': 'required large'}}) }}
+                        </div>
+                    </div>    
+                    <div class="mws-form-row">
+                        {{ form_label(form.active, 'Active ?', {'label_attr': {'class': 'mws-form-label'}}) }}
+                        <div class="mws-form-item">
+                            {{ form_widget(form.active) }}
+                        </div>
+                    </div>
+                    {{ form_rest(form) }}
+                    <div class="mws-button-row">
+                        <input type="submit" value="Valider" class="btn btn-danger">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
