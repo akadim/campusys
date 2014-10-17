@@ -92,3 +92,93 @@ campusys_filiere_active:
 campusys_filiere_delete_selection:
     pattern: /admin/filiere/deleteSelection
     defaults: { _controller: campusysPedagogieBundle:Filiere:admin_delete_selection }
+    
+    
+# Modules
+campusys_modules_list:
+    path: /admin/module/
+    defaults: { _controller: campusysPedagogieBundle:Module:admin_index }
+
+campusys_module_edit:
+    pattern: /admin/module/edit/{id}
+    defaults: { _controller: campusysPedagogieBundle:Module:admin_edit }
+    
+campusys_module_edit_column:
+    pattern: /admin/module/editColumn/{column}/{value}/{id}
+    defaults: { _controller: campusysPedagogieBundle:Module:admin_edit_column }
+    
+campusys_module_view:
+    pattern: /admin/module/view/{id}
+    defaults: { _controller: campusysPedagogieBundle:Module:admin_view }
+
+campusys_module_delete:
+    pattern: /admin/module/delete/{id}
+    defaults: { _controller: campusysPedagogieBundle:Module:admin_delete }
+
+campusys_module_active:
+    pattern: /admin/module/active/{id}
+    defaults: { _controller: campusysPedagogieBundle:Module:admin_active }
+
+campusys_module_delete_selection:
+    pattern: /admin/module/deleteSelection
+    defaults: { _controller: campusysPedagogieBundle:Module:admin_delete_selection }
+    
+    
+ # Cours
+campusys_courses_list:
+    path: /admin/cours/
+    defaults: { _controller: campusysPedagogieBundle:Cours:admin_index }
+
+campusys_cours_edit:
+    pattern: /admin/cours/edit/{id}
+    defaults: { _controller: campusysPedagogieBundle:Cours:admin_edit }
+    
+campusys_cours_edit_column:
+    pattern: /admin/cours/editColumn/{column}/{value}/{id}
+    defaults: { _controller: campusysPedagogieBundle:Cours:admin_edit_column }
+    
+campusys_cours_view:
+    pattern: /admin/cours/view/{id}
+    defaults: { _controller: campusysPedagogieBundle:Cours:admin_view }
+
+campusys_cours_delete:
+    pattern: /admin/cours/delete/{id}
+    defaults: { _controller: campusysPedagogieBundle:Cours:admin_delete }
+
+campusys_cours_active:
+    pattern: /admin/cours/active/{id}
+    defaults: { _controller: campusysPedagogieBundle:Cours:admin_active }
+
+campusys_cours_delete_selection:
+    pattern: /admin/cours/deleteSelection
+    defaults: { _controller: campusysPedagogieBundle:Cours:admin_delete_selection }
+    
+
+ # Semestre
+campusys_semestres_list:
+    path: /admin/semestre/
+    defaults: { _controller: campusysPedagogieBundle:Semestre:admin_index }
+
+campusys_semestre_edit:
+    pattern: /admin/semestre/edit/{id}
+    defaults: { _controller: campusysPedagogieBundle:Semestre:admin_edit }
+    
+campusys_semestre_edit_column:
+    pattern: /admin/semestre/editColumn/{column}/{value}/{id}
+    defaults: { _controller: campusysPedagogieBundle:Semestre:admin_edit_column }
+    
+campusys_semestre_view:
+    pattern: /admin/semestre/view/{id}
+    defaults: { _controller: campusysPedagogieBundle:Semestre:admin_view }
+
+campusys_semestre_delete:
+    pattern: /admin/semestre/delete/{id}
+    defaults: { _controller: campusysPedagogieBundle:Semestre:admin_delete }
+
+campusys_semestre_active:
+    pattern: /admin/semestre/active/{id}
+    defaults: { _controller: campusysPedagogieBundle:Semestre:admin_active }
+
+campusys_semestre_delete_selection:
+    pattern: /admin/semestre/deleteSelection
+    defaults: { _controller: campusysPedagogieBundle:Semestre:admin_delete_selection }

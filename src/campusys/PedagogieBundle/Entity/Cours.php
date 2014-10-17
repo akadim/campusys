@@ -3,16 +3,15 @@
 namespace campusys\PedagogieBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Filiere
+ * Cours
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="campusys\PedagogieBundle\Entity\FiliereRepository")
+ * @ORM\Table(name="cours")
+ * @ORM\Entity(repositoryClass="campusys\PedagogieBundle\Entity\CoursRepository")
  */
-class Filiere
+class Cours
 {
     /**
      * @var integer
@@ -27,7 +26,7 @@ class Filiere
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
-     * @Assert\NotBlank(message="le champs 'nom' est requis")
+     * @Assert\NotBlank(message="Le champs 'nom' est requis")
      */
     private $name;
 
@@ -39,27 +38,27 @@ class Filiere
     private $description;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="numberOfHour", type="integer")
+     * @Assert\NotBlank(message="Le champs 'masse horaire' est requis")
+     */
+    private $numberOfHour;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="active", type="boolean")
      */
     private $active;
 
-    /**
-     *@ORM\ManyToOne(targetEntity="Campus", inversedBy="filieres")
-     *@ORM\JoinColumn(name="campus_id", referencedColumnName="id")
-     */
-    private $campus;
-    
     
     /**
-     *@ORM\OneToMany(targetEntity="Module", mappedBy="filiere", fetch="EAGER", cascade={"persist", "remove"})
+     *@ORM\ManyToOne(targetEntity="Module", inversedBy="modules")
+     *@ORM\JoinColumn(name="module_id", referencedColumnName="id")
+     *@Assert\NotBlank(message="Le champs 'module' est requis")
      */
-    private $modules;
-    
-    public function __construct() {
-        $modules = new ArrayCollection();
-    }
+    private $module;
 
     /**
      * Get id
@@ -75,7 +74,7 @@ class Filiere
      * Set name
      *
      * @param string $name
-     * @return Filiere
+     * @return Cours
      */
     public function setName($name)
     {
@@ -98,7 +97,7 @@ class Filiere
      * Set description
      *
      * @param string $description
-     * @return Filiere
+     * @return Cours
      */
     public function setDescription($description)
     {
@@ -118,10 +117,33 @@ class Filiere
     }
 
     /**
+     * Set numberOfHour
+     *
+     * @param integer $numberOfHour
+     * @return Cours
+     */
+    public function setNumberOfHour($numberOfHour)
+    {
+        $this->numberOfHour = $numberOfHour;
+    
+        return $this;
+    }
+
+    /**
+     * Get numberOfHour
+     *
+     * @return integer 
+     */
+    public function getNumberOfHour()
+    {
+        return $this->numberOfHour;
+    }
+
+    /**
      * Set active
      *
      * @param boolean $active
-     * @return Filiere
+     * @return Cours
      */
     public function setActive($active)
     {
@@ -140,21 +162,14 @@ class Filiere
         return $this->active;
     }
     
-    public function getCampus()
+    public function getModule()
     {
-        return $this->campus;
+        return $this->module;
     }
     
-    public function setCampus($campus){
-        $this->campus = $campus;
-    }
-    
-    public function getModules(){
-        return $this->modules;
-    }
-    
-    public function setModules($modules) {
-        $this->modules = $modules;   
+    public function setModule($module)
+    {
+        $this->module = $module;
     }
     
     public function set($column, $value){

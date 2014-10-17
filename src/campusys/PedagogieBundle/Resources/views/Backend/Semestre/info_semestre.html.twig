@@ -1,0 +1,21 @@
+{# empty Twig template #}
+<ul class="mws-summary clearfix">
+    <li>
+        <span class="key"><i class="icon-support"></i> Num&eacute;ro</span>
+        <span class="val">
+            <span class="text-nowrap">{{ semestre.code }}</span>
+        </span>
+    </li>
+    <li>
+        <span class="key"><i class="icon-certificate"></i> Description</span>
+        <span class="val">
+            <span class="text-nowrap">{{ semestre.dateDebut | date("d/m/Y") }}</span>
+        </span>
+    </li>
+    <li>
+        <span class="key"><i class="icon-certificate"></i> Campus</span>
+        <span class="val">
+            <span class="text-nowrap">{{ semestre.dateFin | date("d/m/Y") }}</span>
+        </span>
+    </li>
+</ul>

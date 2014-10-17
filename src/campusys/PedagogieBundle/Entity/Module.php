@@ -7,12 +7,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Filiere
+ * Module
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="campusys\PedagogieBundle\Entity\FiliereRepository")
+ * @ORM\Table(name="module")
+ * @ORM\Entity(repositoryClass="campusys\PedagogieBundle\Entity\ModuleRepository")
  */
-class Filiere
+class Module
 {
     /**
      * @var integer
@@ -27,7 +27,7 @@ class Filiere
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
-     * @Assert\NotBlank(message="le champs 'nom' est requis")
+     * @Assert\NotBlank(message="Le champs 'nom' est requis")
      */
     private $name;
 
@@ -39,26 +39,42 @@ class Filiere
     private $description;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="numberOfHour", type="integer")
+     * @Assert\NotBlank(message="Le champs 'masse horaire' est requis")
+     */
+    private $numberOfHour;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="active", type="boolean")
      */
     private $active;
+    
+    /**
+     *@ORM\ManyToOne(targetEntity="Filiere", inversedBy="modules") 
+     *@ORM\JoinColumn(name="filiere_id", referencedColumnName="id")
+     * @Assert\NotBlank(message="Le champs 'filière' est requis")
+     */
+    private $filiere;
+    
+    /**
+     *@ORM\ManyToOne(targetEntity="Semestre", inversedBy="modules") 
+     *@ORM\JoinColumn(name="filiere_id", referencedColumnName="id")
+     *@Assert\NotBlank(message="Le champs 'Semestre' est requis")
+     */
+    private $semestre;
 
-    /**
-     *@ORM\ManyToOne(targetEntity="Campus", inversedBy="filieres")
-     *@ORM\JoinColumn(name="campus_id", referencedColumnName="id")
-     */
-    private $campus;
-    
     
     /**
-     *@ORM\OneToMany(targetEntity="Module", mappedBy="filiere", fetch="EAGER", cascade={"persist", "remove"})
+     *@ORM\OneToMany(targetEntity="Cours", mappedBy="module", fetch="EAGER", cascade={"persist", "remove"})
      */
-    private $modules;
+    private $courses;
     
     public function __construct() {
-        $modules = new ArrayCollection();
+        $this->courses = new ArrayCollection();
     }
 
     /**
@@ -75,7 +91,7 @@ class Filiere
      * Set name
      *
      * @param string $name
-     * @return Filiere
+     * @return Module
      */
     public function setName($name)
     {
@@ -98,7 +114,7 @@ class Filiere
      * Set description
      *
      * @param string $description
-     * @return Filiere
+     * @return Module
      */
     public function setDescription($description)
     {
@@ -118,10 +134,33 @@ class Filiere
     }
 
     /**
+     * Set numberOfHour
+     *
+     * @param integer $numberOfHour
+     * @return Module
+     */
+    public function setNumberOfHour($numberOfHour)
+    {
+        $this->numberOfHour = $numberOfHour;
+    
+        return $this;
+    }
+
+    /**
+     * Get numberOfHour
+     *
+     * @return integer 
+     */
+    public function getNumberOfHour()
+    {
+        return $this->numberOfHour;
+    }
+
+    /**
      * Set active
      *
      * @param boolean $active
-     * @return Filiere
+     * @return Module
      */
     public function setActive($active)
     {
@@ -140,21 +179,31 @@ class Filiere
         return $this->active;
     }
     
-    public function getCampus()
+    public function getFiliere()
     {
-        return $this->campus;
+        return $this->filiere;
     }
     
-    public function setCampus($campus){
-        $this->campus = $campus;
+    public function setFiliere($filiere){
+        $this->filiere = $filiere;
     }
     
-    public function getModules(){
-        return $this->modules;
+    public function getSemestre()
+    {
+        return $this->semestre;
     }
     
-    public function setModules($modules) {
-        $this->modules = $modules;   
+    public function setSemestre($semestre){
+        $this->semestre = $semestre;
+    }
+    
+    public function getCourses()
+    {
+        return $this->courses;
+    }
+    
+    public function setCourses($courses){
+        $this->courses = $courses;
     }
     
     public function set($column, $value){
